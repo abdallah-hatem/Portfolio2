@@ -35,6 +35,7 @@ export function StatementSection() {
         </div>
 
         <figure className="statement-portrait">
+          <span className="statement-portrait-strike" aria-hidden="true" />
           <div className="statement-portrait-frame">
             <Image
               src="/assets/portrait-poster.jpg"
@@ -44,7 +45,6 @@ export function StatementSection() {
               sizes="(max-width: 1020px) 20rem, 21rem"
               className="statement-portrait-image"
             />
-            <span className="statement-portrait-strike" aria-hidden="true" />
           </div>
           <figcaption>
             {siteConfig.name}

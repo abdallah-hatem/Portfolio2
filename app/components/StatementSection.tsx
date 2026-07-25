@@ -37,10 +37,10 @@ export function StatementSection() {
         <figure className="statement-portrait">
           <div className="statement-portrait-frame">
             <Image
-              src="/assets/portrait.jpg"
+              src="/assets/portrait-poster.jpg"
               alt={`Portrait of ${siteConfig.name}`}
-              width={870}
-              height={959}
+              width={1000}
+              height={1250}
               sizes="(max-width: 1020px) 20rem, 21rem"
               className="statement-portrait-image"
             />

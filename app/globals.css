@@ -987,13 +987,15 @@ img {
   display: block;
   width: 100%;
   height: auto;
-  filter: grayscale(1) contrast(1.16) brightness(1.04);
+  /* The monochrome, vignette, and grain are baked into the asset, so the
+     browser only needs a light lift on top. */
+  filter: contrast(1.03);
 }
 
 .statement-portrait-strike {
   position: absolute;
   z-index: 2;
-  inset: 26% -6% auto -6%;
+  inset: 42% -6% auto -6%;
   block-size: clamp(1.5rem, 3.4vw, 2.4rem);
   background: var(--orange);
   transform: rotate(-3deg);

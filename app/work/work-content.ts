@@ -166,6 +166,73 @@ export const workProjects: WorkProject[] = [
     relatedSlugs: ["housing-for-all", "welyra-vendor-panel"],
   },
   {
+    slug: "masareef",
+    title: "Masareef",
+    navLabel: "Masareef",
+    eyebrow: "Solo product · Design, app, backend, and infrastructure",
+    stamp: "PERSONAL PRODUCT / iOS + ANDROID",
+    headline: "An expense tracker you talk to instead of filling in forms.",
+    summary:
+      "My own money app, built end to end and running on my phone against real data. Say what you spent, type it in plain language, or let it read the bank SMS itself — an LLM turns any of those into a categorised transaction. Egyptian pounds, a native home-screen widget, and live gold prices, because that is how saving actually works here.",
+    cardLine: "Voice, text, and SMS expense capture with an LLM behind it.",
+    whatItDoes: [
+      "Captures a transaction from speech, from a typed line like \"coffee 50 EGP\", or straight from a bank SMS.",
+      "Categorises every capture with an LLM, with user rules and custom categories on top.",
+      "Shows the month at a glance: net, accounts, a spend donut, income against expenses, and a category breakdown.",
+      "Puts this month's spend, today's spend, and top categories on the iOS home screen, with mic and keyboard quick-add.",
+      "Tracks live Egyptian gold prices at 24, 21, and 18 karat as a savings measure.",
+      "Fires notifications carrying custom quick actions, so a capture can be confirmed without opening the app.",
+    ],
+    stack: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Expo Router",
+      "NativeWind",
+      "Supabase",
+      "PostgreSQL",
+      "Deno Edge Functions",
+      "Groq",
+      "SwiftUI",
+      "EAS Update",
+      "Sentry",
+    ],
+    buildNotes: [
+      {
+        title: "The LLM sits on the server, never the client",
+        copy: "Three Deno Edge Functions — transcribe, categorize, and ingest-sms — hold the model and the API key. The app never sees either, so the prompt and the key can be changed without shipping an app update.",
+      },
+      {
+        title: "Capture has to be faster than not bothering",
+        copy: "An expense tracker dies the moment logging costs more effort than skipping it. Voice, one typed line, an SMS the app reads on its own, and a widget button all exist to remove that friction.",
+      },
+      {
+        title: "Free tier is a design constraint",
+        copy: "Hitting a daily token cap silently dropped captures, so the prompts got slimmer and anything without a digit stops before it reaches the model. Cheap beats clever when the bill is per token.",
+      },
+      {
+        title: "Native code is a release decision",
+        copy: "The widget and quick actions are real native targets, so they cannot ride an over-the-air update. Native work stays on its own branch until a build is cut, keeping the main line safe to push to a live phone.",
+      },
+    ],
+    highlights: [
+      "Built solo: interface, app, database, edge functions, and release pipeline",
+      "Native iOS home-screen widget in SwiftUI, sharing state through an App Group",
+      "Three LLM-backed edge functions for transcription, categorisation, and SMS parsing",
+      "Sign in with Apple on iOS, native Google sign-in on Android",
+      "Shipped over the air with EAS Update; monitored with Sentry and an AI event log",
+      "Runs as my daily driver on real spending",
+    ],
+    liveUrl: null,
+    image: {
+      src: "/assets/work/masareef.webp",
+      alt: "Masareef expense tracker: dashboard, voice capture, and transaction list",
+      width: 1800,
+      height: 1125,
+    },
+    relatedSlugs: ["polt", "trash4goods"],
+  },
+  {
     slug: "narmer-international-college",
     title: "Narmer International College",
     navLabel: "Narmer College",
@@ -435,7 +502,7 @@ export const workProjects: WorkProject[] = [
       width: 1080,
       height: 1080,
     },
-    relatedSlugs: ["trash4goods", "bask"],
+    relatedSlugs: ["trash4goods", "masareef"],
   },
   {
     slug: "trash4goods",
@@ -481,7 +548,7 @@ export const workProjects: WorkProject[] = [
       width: 1080,
       height: 1080,
     },
-    relatedSlugs: ["polt", "keytor"],
+    relatedSlugs: ["polt", "masareef"],
   },
 ];
 

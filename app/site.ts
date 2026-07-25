@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Abdallah Hatem",
   wordmark: { head: "abdallah", tail: ".dev" },
-  url: "https://abdallah-hatem.vercel.app",
+  url: "https://portfolio2-one-steel.vercel.app",
   title: "Abdallah Hatem | Fullstack Developer",
   description:
     "Fullstack developer building government platforms, marketplaces, admin systems, and mobile apps. React, Next.js, React Native, and Node.",

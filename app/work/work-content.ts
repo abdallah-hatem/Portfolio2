@@ -43,7 +43,7 @@ export const workProjects: WorkProject[] = [
       "Gives brokers and owners the tooling to publish and maintain their inventory.",
       "Carries transactions through a process built to government requirements.",
     ],
-    stack: [],
+    stack: ["Next.js", "TypeScript", "Laravel", "MySQL", "MongoDB", "Docker"],
     buildNotes: [
       {
         title: "Verified supply",
@@ -89,7 +89,7 @@ export const workProjects: WorkProject[] = [
       "Integrates with the Social Housing and Mortgage Finance Fund for subsidised loans.",
       "Carries the Green Pyramid Rating System into the project listings.",
     ],
-    stack: [],
+    stack: ["Next.js", "TypeScript", "Laravel", "MySQL", "MongoDB", "Docker"],
     buildNotes: [
       {
         title: "One flow, many eligibility rules",
@@ -182,7 +182,7 @@ export const workProjects: WorkProject[] = [
       "Opens parent-school communication channels.",
       "Gives students access to educational resources and scheduling tools.",
     ],
-    stack: [],
+    stack: ["Next.js", "TypeScript", "Laravel", "MySQL", "MongoDB", "Docker"],
     buildNotes: [
       {
         title: "Leading the front end",

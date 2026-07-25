@@ -8,8 +8,12 @@ const stackGroups = [
     items: ["React Native", "Expo", "Redux Persist", "Push notifications", "Maps"],
   },
   {
+    title: "Backend & data",
+    items: ["Laravel", "MySQL", "MongoDB", "Docker", "Next.js API routes", "REST APIs"],
+  },
+  {
     title: "Platform",
-    items: ["Next.js API routes", "REST APIs", "Axios", "Server-side rendering", "Admin tooling"],
+    items: ["Server-side rendering", "Axios", "Admin tooling"],
   },
 ];
 

@@ -170,10 +170,10 @@ export const workProjects: WorkProject[] = [
     title: "Masareef",
     navLabel: "Masareef",
     eyebrow: "Solo product · Design, app, backend, and infrastructure",
-    stamp: "PERSONAL PRODUCT / iOS + ANDROID",
+    stamp: "PERSONAL PRODUCT / ON THE APP STORE",
     headline: "An expense tracker you talk to instead of filling in forms.",
     summary:
-      "My own money app, built end to end and running on my phone against real data. Say what you spent, type it in plain language, or let it read the bank SMS itself — an LLM turns any of those into a categorised transaction. Egyptian pounds, a native home-screen widget, and live gold prices, because that is how saving actually works here.",
+      "My own money app, built end to end, shipped on the App Store, and running on my own phone against real spending. Say what you spent, type it in plain language, or let it read the bank SMS itself — an LLM turns any of those into a categorised transaction. Egyptian pounds, a native home-screen widget, and live gold prices, because that is how saving actually works here.",
     cardLine: "Voice, text, and SMS expense capture with an LLM behind it.",
     whatItDoes: [
       "Captures a transaction from speech, from a typed line like \"coffee 50 EGP\", or straight from a bank SMS.",
@@ -216,6 +216,7 @@ export const workProjects: WorkProject[] = [
       },
     ],
     highlights: [
+      "Published on the iOS App Store",
       "Built solo: interface, app, database, edge functions, and release pipeline",
       "Native iOS home-screen widget in SwiftUI, sharing state through an App Group",
       "Three LLM-backed edge functions for transcription, categorisation, and SMS parsing",
@@ -223,7 +224,7 @@ export const workProjects: WorkProject[] = [
       "Shipped over the air with EAS Update; monitored with Sentry and an AI event log",
       "Runs as my daily driver on real spending",
     ],
-    liveUrl: null,
+    liveUrl: "https://apps.apple.com/eg/app/masareef-budget-tracker/id6777166627",
     image: {
       src: "/assets/work/masareef.webp",
       alt: "Masareef expense tracker: dashboard, voice capture, and transaction list",

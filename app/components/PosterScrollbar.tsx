@@ -127,15 +127,21 @@ export function PosterScrollbar() {
   }, []);
 
   const scrollFromPointer = useCallback(
-    (clientY: number) => {
+    (clientX: number, clientY: number) => {
       const rail = railRef.current;
 
       if (!rail) {
         return;
       }
 
+      // On phones the rail lies horizontally along the bottom edge.
       const rect = rail.getBoundingClientRect();
-      scrollToProgress((clientY - rect.top) / rect.height);
+      const isHorizontal = rect.width > rect.height * 1.8;
+      scrollToProgress(
+        isHorizontal
+          ? (clientX - rect.left) / rect.width
+          : (clientY - rect.top) / rect.height,
+      );
     },
     [scrollToProgress],
   );
@@ -149,7 +155,7 @@ export function PosterScrollbar() {
     event.currentTarget.setPointerCapture(event.pointerId);
     draggingRef.current = true;
     setIsDragging(true);
-    scrollFromPointer(event.clientY);
+    scrollFromPointer(event.clientX, event.clientY);
   };
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -158,7 +164,7 @@ export function PosterScrollbar() {
     }
 
     event.preventDefault();
-    scrollFromPointer(event.clientY);
+    scrollFromPointer(event.clientX, event.clientY);
   };
 
   const stopDragging = (event: ReactPointerEvent<HTMLDivElement>) => {

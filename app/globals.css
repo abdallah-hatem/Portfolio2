@@ -2276,6 +2276,131 @@ html.has-poster-scrollbar::-webkit-scrollbar {
   opacity: 1;
 }
 
+/* Torn paper caps on the rail ends. */
+.poster-scrollbar__rail::before,
+.poster-scrollbar__rail::after {
+  position: absolute;
+  inset-inline: -0.28rem;
+  block-size: 0.85rem;
+  content: "";
+  pointer-events: none;
+}
+
+.poster-scrollbar__rail::before {
+  inset-block-start: -0.48rem;
+  background:
+    linear-gradient(135deg, transparent 0 24%, var(--paper) 25% 37%, transparent 38% 54%, var(--paper) 55% 66%, transparent 67%),
+    linear-gradient(var(--paper), var(--paper));
+  clip-path: polygon(0 48%, 8% 10%, 16% 55%, 25% 16%, 34% 62%, 43% 22%, 55% 68%, 67% 18%, 78% 60%, 90% 20%, 100% 50%, 100% 100%, 0 100%);
+  opacity: 0.85;
+}
+
+.poster-scrollbar__rail::after {
+  inset-block-end: -0.5rem;
+  background:
+    linear-gradient(var(--paper), var(--paper)),
+    radial-gradient(circle at 50% 30%, rgb(13 13 13 / 0.35) 0 1px, transparent 1.8px);
+  background-size: auto, 0.6rem 0.58rem;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 92% 82%, 84% 38%, 73% 86%, 64% 46%, 55% 88%, 43% 38%, 34% 84%, 23% 42%, 14% 88%, 6% 50%, 0 78%);
+  opacity: 0.72;
+}
+
+/* On phones the rail turns horizontal along the bottom edge and becomes the
+   visible section nav, as on the reference site. */
+@media (max-width: 700px) {
+  .poster-scrollbar {
+    inset-block: auto max(0.72rem, env(safe-area-inset-bottom));
+    inset-inline: 0.78rem;
+    width: auto;
+    align-content: end;
+    block-size: 3.35rem;
+  }
+
+  .poster-scrollbar__rail {
+    inline-size: 100%;
+    block-size: 0.98rem;
+    min-block-size: 0;
+    border-color: rgb(13 13 13 / 0.72);
+    background:
+      linear-gradient(180deg, rgb(248 242 228 / 0.22), transparent 50%, rgb(13 13 13 / 0.18)),
+      repeating-linear-gradient(90deg, transparent 0 0.65rem, rgb(248 242 228 / 0.13) 0.65rem 0.72rem),
+      var(--ink);
+    box-shadow:
+      0 0 0 1px rgb(248 242 228 / 0.26),
+      0.16rem 0.16rem 0 rgb(13 13 13 / 0.36);
+  }
+
+  .poster-scrollbar__rail::before,
+  .poster-scrollbar__rail::after {
+    inset-block: -0.26rem;
+    inline-size: 0.85rem;
+    block-size: auto;
+  }
+
+  .poster-scrollbar__rail::before {
+    inset-inline: -0.44rem auto;
+    clip-path: polygon(100% 0, 100% 100%, 44% 100%, 82% 86%, 34% 72%, 82% 58%, 34% 44%, 82% 30%, 38% 16%, 78% 0);
+  }
+
+  .poster-scrollbar__rail::after {
+    inset-inline: auto -0.44rem;
+    clip-path: polygon(0 0, 58% 0, 22% 16%, 70% 30%, 22% 44%, 70% 58%, 22% 72%, 68% 86%, 28% 100%, 0 100%);
+  }
+
+  .poster-scrollbar__fill {
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: var(--poster-scroll-progress-percent);
+    block-size: auto;
+  }
+
+  .poster-scrollbar__thumb {
+    inset-block-start: 50%;
+    inset-inline-start: var(--poster-scroll-progress-percent);
+    inline-size: 2.35rem;
+    block-size: 2.35rem;
+    transform: translate(-50%, -50%) rotate(-5deg);
+  }
+
+  .poster-scrollbar__thumb:hover,
+  .poster-scrollbar.is-dragging .poster-scrollbar__thumb {
+    transform: translate(-50%, -50%) rotate(3deg) scale(1.03);
+  }
+
+  .poster-scrollbar__mark {
+    inset-block-start: 50%;
+    inset-inline-start: var(--poster-mark-progress-percent);
+    inline-size: 0.95rem;
+    block-size: 0.95rem;
+  }
+
+  .poster-scrollbar__mark::after {
+    display: none;
+  }
+
+  /* Keep the last lines of the footer clear of the bar. */
+  .site-footer {
+    padding-block-end: 4.25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .poster-scrollbar {
+    inset-inline: 0.62rem;
+  }
+
+  .poster-scrollbar__mark {
+    inline-size: 0.78rem;
+    block-size: 0.78rem;
+    font-size: 0.42rem;
+  }
+
+  .poster-scrollbar__thumb {
+    inline-size: 2.12rem;
+    block-size: 2.12rem;
+  }
+}
+
 /* ==========================================================================
    Responsive
    ========================================================================== */
@@ -2319,54 +2444,6 @@ html.has-poster-scrollbar::-webkit-scrollbar {
 
   .site-nav-cta {
     display: none;
-  }
-
-  /* Once the links collapse into the menu button, the bar follows the scroll —
-     otherwise, a screen into the page, there is no way to navigate without
-     scrolling back to the top. It carries its own torn-ink strip on a
-     pseudo-element so the clip-path cannot cut off the open menu, which makes
-     the static strips redundant. */
-  .site-header {
-    position: fixed;
-  }
-
-  .site-header::before {
-    position: absolute;
-    z-index: -1;
-    inset: 0 0 auto;
-    block-size: clamp(5.6rem, 6.4vw, 6.2rem);
-    background:
-      linear-gradient(180deg, rgb(13 13 13 / 0.04), rgb(13 13 13 / 0.2)),
-      url("/assets/poster/navbar-ink-mobile.webp") center top / cover no-repeat,
-      var(--ink);
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 76%,
-      94% 83%,
-      87% 72%,
-      78% 82%,
-      68% 74%,
-      58% 86%,
-      47% 73%,
-      36% 84%,
-      26% 74%,
-      16% 82%,
-      7% 72%,
-      0 78%
-    );
-    content: "";
-    pointer-events: none;
-  }
-
-  .hero-nav-ink,
-  .work-detail-ink-top {
-    display: none;
-  }
-
-  /* Anchor jumps (#work, #about, …) land below the fixed bar, not under it. */
-  main section[id] {
-    scroll-margin-top: 5.6rem;
   }
 
   .hero-container,
@@ -2423,10 +2500,6 @@ html.has-poster-scrollbar::-webkit-scrollbar {
 
   .work-detail-hero-grid {
     gap: clamp(2.5rem, 6vw, 3.5rem);
-  }
-
-  .poster-scrollbar {
-    display: none;
   }
 }
 

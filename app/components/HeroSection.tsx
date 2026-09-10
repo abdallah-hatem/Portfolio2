@@ -2,13 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "../site";
 import { workProjects } from "../work/work-content";
-import { SiteNavbar } from "./SiteNavbar";
 
 export function HeroSection() {
   return (
     <section className="hero-section" aria-labelledby="hero-title">
       <div className="hero-nav-ink" aria-hidden="true" />
-      <SiteNavbar />
 
       <div className="hero-stage">
         <div className="hero-paper-field" aria-hidden="true" />

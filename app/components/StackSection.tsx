@@ -1,19 +1,19 @@
 const stackGroups = [
   {
     title: "Web",
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "Redux", "Tailwind CSS", "Server components"],
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "shadcn/ui", "TanStack Query", "Zustand", "Redux", "next-intl · RTL"],
   },
   {
     title: "Mobile",
-    items: ["React Native", "Expo", "Redux Persist", "Push notifications", "Maps"],
+    items: ["React Native", "Expo", "EAS Build & Update", "Push notifications", "Background location", "Maps"],
   },
   {
     title: "Backend & data",
-    items: ["Laravel", "MySQL", "MongoDB", "Docker", "Next.js API routes", "REST APIs"],
+    items: ["NestJS", "Prisma", "PostgreSQL", "Row-level security", "Supabase", "Laravel", "MySQL", "MongoDB", "Docker"],
   },
   {
     title: "Platform",
-    items: ["Server-side rendering", "Axios", "Admin tooling"],
+    items: ["Vercel", "Neon", "Turborepo", "Jest", "Playwright", "Sentry", "Claude Code"],
   },
 ];
 
